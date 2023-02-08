@@ -2,7 +2,7 @@ package com.example.problema_etica.domain;
 
 public class Persoana extends Entity<Long>{
     public enum Orase{
-        Braila, Orsova, Targovisate, Oradea
+        Braila, Orsova, Targoviste, Oradea
     }
     private String nume;
     private String prenume;

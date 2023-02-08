@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="461.0" prefWidth="265.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.problema_etica.InregistrareController">
+   <children>
+      <TextField fx:id="numeInregistrare" layoutX="58.0" layoutY="14.0" promptText="Nume" />
+      <TextField fx:id="prenumeInregistrare" layoutX="58.0" layoutY="47.0" promptText="Prenume" />
+      <TextField fx:id="usernameInregistrare" layoutX="58.0" layoutY="85.0" promptText="Username" />
+      <TextField fx:id="parolaInregistrare" layoutX="58.0" layoutY="123.0" promptText="Parola" />
+      <TextField fx:id="stradaInregistrare" layoutX="58.0" layoutY="228.0" promptText="Strada" />
+      <TextField fx:id="numarStradaInregistrare" layoutX="58.0" layoutY="272.0" promptText="Numar Strada" />
+      <TextField fx:id="telefonInregistrare" layoutX="58.0" layoutY="313.0" promptText="Nr. Telefon" />
+      <ComboBox fx:id="orasInregistrare" layoutX="58.0" layoutY="175.0" prefWidth="150.0" promptText="Oras" />
+      <Button fx:id="butonInregistrare" layoutX="97.0" layoutY="364.0" mnemonicParsing="false" onAction="#onInregistrareButonClick" text="Inrgistrare" />
+      <Button fx:id="butonLogare" layoutX="107.0" layoutY="406.0" mnemonicParsing="false" onAction="#onLogareButonClick" text="Logare" />
+   </children>
+</AnchorPane>

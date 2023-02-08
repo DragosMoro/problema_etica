@@ -7,6 +7,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.UUID;
 
 public class NevoieRepo implements IRepository<Nevoie>{
     private ArrayList<Nevoie> nevoiList;
@@ -94,4 +95,10 @@ public class NevoieRepo implements IRepository<Nevoie>{
     }
 
 
+    public void adaugaNevoie(Nevoie nevoie) {
+        Long id = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+        nevoie.setId(id);
+        nevoiList.add(nevoie);
+        saveData();
+    }
 }

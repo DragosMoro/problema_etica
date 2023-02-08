@@ -17,10 +17,18 @@ import java.util.stream.Collectors;
 public class AjutorController {
     @FXML
     public TableColumn<Nevoie, String> statusColumn;
+    @FXML
+    public TableColumn<Nevoie, String> statusColumn1;
 
     @FXML
     public Button rezolvaButton;
 
+
+    @FXML
+    public TableColumn<Nevoie, String> deadlineColumn1;
+
+    @FXML
+    public TableColumn<Nevoie, String> descriereColumn1;
 
     @FXML
     public TableColumn<Nevoie, String> deadlineColumn;
@@ -30,12 +38,19 @@ public class AjutorController {
 
     @FXML
     public TableView<Nevoie> nevoiOrasTableView;
+    @FXML
+    public TableView<Nevoie> fapteBuneTableView;
 
     @FXML
     public TableColumn<Nevoie, String> omInNevoieColumn;
 
     @FXML
     public TableColumn<Nevoie, String> onSalvatorColumn;
+    @FXML
+    public TableColumn<Nevoie, String> omInNevoieColumn1;
+
+    @FXML
+    public TableColumn<Nevoie, String> onSalvatorColumn1;
 
     @FXML
     public Tab tab1;
@@ -45,10 +60,32 @@ public class AjutorController {
 
     @FXML
     public TableColumn<Nevoie, String> titluColumn;
+    @FXML
+    public TableColumn<Nevoie, String> titluColumn1;
+
+    @FXML
+    public DatePicker deadlineDatePicker;
+
+    @FXML
+    public TextField titluTextField;
+
+    @FXML
+    public TextField descriereTextField;
+
+
+
+
+    @FXML
+    public Button adaugareNevoieButton;
+
+
 
     private Service service;
     private Persoana persoanaLogata;
     ObservableList<Nevoie> oameniInNevoieModel = FXCollections.observableArrayList();
+
+    ObservableList<Nevoie> fapteBuneModel = FXCollections.observableArrayList();
+
 
     @FXML
     public Label username;
@@ -57,6 +94,7 @@ public class AjutorController {
     this.persoanaLogata = user;
     username.setText(persoanaLogata.getUsername());
     populareNevoiOrasTable();
+    updateTabelListaDeFapteBune();
     }
 
     public void populareNevoiOrasTable()
@@ -102,6 +140,7 @@ public class AjutorController {
         if (nevoieDeRezolvat.getOmSalvator() == 0 || Objects.equals(nevoieDeRezolvat.getStatus(), "Caut erou!")) {
             service.updateNevoie(nevoieDeRezolvat.getId(), persoanaLogata.getId());
             populareNevoiOrasTable();
+            updateTabelListaDeFapteBune();
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Nevoia i-a fost atribuita persoanei", ButtonType.CLOSE);
             alert.show();
         }
@@ -110,9 +149,45 @@ public class AjutorController {
             Alert alert1 = new Alert(Alert.AlertType.ERROR, "Nevoia nu mai poate fi selectata", ButtonType.OK);
             alert1.show();
         }
+
+    }
+    private void updateTabelListaDeFapteBune()
+    {
+        ArrayList<Nevoie> nevoi = service.getAllNevoi();
+        ArrayList<Nevoie> nevoiRezolvateDeUtilizator = new ArrayList<>();
+        for (Nevoie nevoie : nevoi)
+        {
+            if (Objects.equals(nevoie.getOmSalvator(), persoanaLogata.getId()))
+                nevoiRezolvateDeUtilizator.add(nevoie);
+        }
+
+        fapteBuneModel.setAll(nevoiRezolvateDeUtilizator);
+        titluColumn1.setCellValueFactory(new PropertyValueFactory<>("titlu"));
+        descriereColumn1.setCellValueFactory(new PropertyValueFactory<>("descriere"));
+        deadlineColumn1.setCellValueFactory(new PropertyValueFactory<>("deadline"));
+        omInNevoieColumn1.setCellValueFactory(new PropertyValueFactory<>("omInNevoie"));
+        onSalvatorColumn1.setCellValueFactory(new PropertyValueFactory<>("omSalvator"));
+        statusColumn1.setCellValueFactory(new PropertyValueFactory<>("status"));
+        fapteBuneTableView.setItems(fapteBuneModel);
+
     }
 
 
+
+    public void onAdaugaNevoieButtonClick()
+    {
+        String titlu = titluTextField.getText();
+        String descriere = descriereTextField.getText();
+        LocalDateTime deadline = deadlineDatePicker.getValue().atStartOfDay();
+        Long omInNevoie = persoanaLogata.getId();
+        Long omSalvator = Long.valueOf(0);
+        String status = "Caut erou!";
+        Nevoie nevoie = new Nevoie(titlu,descriere,deadline,omInNevoie,omSalvator,status);
+        service.adaugaNevoie(nevoie);
+        populareNevoiOrasTable();
+
+
+    }
 
 
 

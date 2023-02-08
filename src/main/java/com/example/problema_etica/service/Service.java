@@ -44,4 +44,8 @@ public class Service {
     public void updateNevoie(Long idNevoie, Long id) {
         nevoieRepo.updateNevoie(idNevoie,id);
     }
+
+    public void adaugaNevoie(Nevoie nevoie) {
+        nevoieRepo.adaugaNevoie(nevoie);
+    }
 }

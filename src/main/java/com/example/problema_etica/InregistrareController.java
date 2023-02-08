@@ -75,7 +75,7 @@ public class InregistrareController {
         Scene scene;
         FXMLLoader loader = new FXMLLoader(MainGUI.class.getResource("logare.fxml"));
         try{
-            scene = new Scene(loader.load(), 801, 501);
+            scene = new Scene(loader.load(), 319, 400);
         } catch (Exception e) {
             e.printStackTrace();
             return;

@@ -4,11 +4,8 @@ import com.example.problema_etica.domain.Persoana;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
-import static java.lang.Long.parseLong;
-import static java.lang.String.valueOf;
 
 public class PersoanaRepo implements IRepository<Persoana>{
     private ArrayList<Persoana> persoaneList;

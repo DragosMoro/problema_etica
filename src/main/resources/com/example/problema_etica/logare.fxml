@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.problema_etica.LogareController">
+<AnchorPane prefHeight="400.0" prefWidth="319.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.problema_etica.LogareController">
    <children>
-      <ListView fx:id="listaPersoane" layoutX="114.0" layoutY="49.0" onMouseClicked="#onMouseClickedRedirect" prefHeight="303.0" prefWidth="373.0" />
+      <ListView fx:id="listaPersoane" layoutX="37.0" layoutY="69.0" onMouseClicked="#onMouseClickedRedirect" prefHeight="303.0" prefWidth="237.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="23.0" prefHeight="17.0" prefWidth="237.0" text="Utilizatori">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
